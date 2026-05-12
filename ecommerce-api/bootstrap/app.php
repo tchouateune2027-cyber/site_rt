@@ -13,6 +13,13 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->alias([
+            'role' => \App\Http\Middleware\RoleMiddleware::class,
+            // 'role' = le nom court qu'on utilisera dans les routes
+            // Exemple : Route::middleware('role:admin')
+        ]);
+    })
+    ->withMiddleware(function (Middleware $middleware) {
+        $middleware->alias([
             'admin' => \App\Http\Middleware\AdminMiddleware::class,
         ]);
 
